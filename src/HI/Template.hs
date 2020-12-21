@@ -151,11 +151,13 @@ initFromTemplate ignores ctx template target = do
       traverse_ (copyDirFromTemplate ctx template target) dirsToCpy
       pure $ WalkExclude excl
       where
+        subdirs' = map (current </>) subdirs
+        files' = map (current </>) files
         ignored :: Path Rel a -> Bool
-        ignored a = ignores `matches` toFilePath (current </> a)
-        excl = filter ignored subdirs
-        dirsToCpy = filter (not . ignored) subdirs
-        filesToCpy = filter (not . ignored) files
+        ignored a = ignores `matches` toFilePath a
+        excl = filter ignored subdirs'
+        dirsToCpy = filter (not . ignored) subdirs'
+        filesToCpy = filter (not . ignored) files'
 
 readTemplate :: Has (Lift IO) sig m => Path Abs Dir -> m (Maybe Template)
 readTemplate templatePath = do
