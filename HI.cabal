@@ -109,3 +109,7 @@ executable hi
   build-depends:  HI
   hs-source-dirs: app
   main-is:        Main.hs
+
+source-repository head
+  type:     git
+  location: https://github.com/poscat0x04/HI
