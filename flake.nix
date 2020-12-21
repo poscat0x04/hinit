@@ -6,21 +6,31 @@
     eachDefaultSystem (
       system:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
-          hpkgs = pkgs.haskellPackages.override {
-            overrides = self: super: {
-              haskeline = super.haskeline_0_8_1_0;
+          pkgs = import nixpkgs { inherit system; overlays = [ self.overlay ]; };
+        in
+          with pkgs;
+          {
+            devShell = hi-dev.envFunc { withHoogle = true; };
+            defaultPackage = hi;
+          }
+    ) // {
+      overlay = self: super:
+        let
+          hpkgs = super.haskellPackages.override {
+            overrides = hself: hsuper: {
+              haskeline = hsuper.haskeline_0_8_1_0;
             };
           };
-          HI = hpkgs.callCabal2nix "HI" ./. {};
-          shell = pkgs.haskell.lib.addBuildTools HI (with pkgs; [
-            cabal-install
-            haskell-language-server
-          ]);
+          hi-base = hpkgs.callCabal2nix "HI" ./. {};
         in
+          with super; with haskell.lib;
           {
-            devShell = shell.envFunc { withHoogle = true; };
-            defaultPackage = HI;
-          }
-    );
+            inherit hi-base;
+            hi-dev = addBuildTools hi-base [
+              haskell-language-server
+              cabal-install
+            ];
+            hi = generateOptparseApplicativeCompletion "hi" hi-base;
+          };
+    };
 }
