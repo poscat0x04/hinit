@@ -50,11 +50,15 @@ askConfig = do
       resp <- prompt "> "
       maybe askText pure resp
 
-readConfig :: (Has (Lift IO) sig m, Has (Throw ConfigParseError) sig m) => m (Maybe Config)
-readConfig = do
+getConfigFile :: (Has (Lift IO) sig m) => m (Path Abs File)
+getConfigFile = do
   configDir <- sendIO $ getXdgDir XdgConfig $ Just [reldir|hi|]
   sendIO $ ensureDir configDir
   let configFile = configDir </> [relfile|config.toml|]
+  pure configFile
+
+readConfig :: (Has (Lift IO) sig m, Has (Throw ConfigParseError) sig m) => Path Abs File -> m (Maybe Config)
+readConfig configFile = do
   exists <- sendIO $ doesFileExist configFile
   if exists
     then do
@@ -70,7 +74,15 @@ getConfig ::
     Has (Throw ConfigParseError) sig m
   ) =>
   m Config
-getConfig = readConfig >>= maybe askConfig pure
+getConfig = do
+  configFile <- getConfigFile
+  mConfig <- readConfig configFile
+  case mConfig of
+    Just c -> pure c
+    Nothing -> do
+      config <- askConfig
+      sendIO $ T.writeFile (fromAbsFile configFile) $ encode configCodec config
+      pure config
 
 configCodec :: TomlCodec Config
 configCodec =
