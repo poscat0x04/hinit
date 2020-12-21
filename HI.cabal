@@ -1,0 +1,111 @@
+cabal-version: 3.0
+name:          HI
+version:       0.1.0
+
+-- synopsis:
+-- description:
+-- category:
+license:       BSD-3-Clause
+license-file:  LICENSE
+author:        Poscat
+maintainer:    poscat@mail.poscat.moe
+copyright:     Copyright (c) Poscat 2020
+stability:     alpha
+homepage:      https://github.com/poscat0x04/HI
+bug-reports:   https://github.com/poscat0x04/HI/issues
+data-dir:      data
+
+common common-attrs
+  build-depends:
+    , base           >=4.10 && <5
+    , fused-effects
+    , path-io
+
+  default-language:   Haskell2010
+  default-extensions:
+    NoStarIsType
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    DeriveFoldable
+    DeriveFunctor
+    DeriveGeneric
+    DeriveTraversable
+    EmptyCase
+    FlexibleContexts
+    FlexibleInstances
+    FunctionalDependencies
+    InstanceSigs
+    KindSignatures
+    LambdaCase
+    MultiWayIf
+    OverloadedStrings
+    PartialTypeSignatures
+    PatternSynonyms
+    RecordWildCards
+    ScopedTypeVariables
+    TupleSections
+    TypeApplications
+    TypeFamilies
+    TypeOperators
+    UnicodeSyntax
+    ViewPatterns
+
+library
+  import:          common-attrs
+  build-depends:
+    , containers
+    , directory
+    , exceptions
+    , generic-lens
+    , Glob
+    , haskeline
+    , lens
+    , megaparsec
+    , mustache
+    , optparse-applicative
+    , parsec
+    , parser-combinators
+    , path
+    , prettyprinter
+    , prettyprinter-ansi-terminal
+    , string-interpolate
+    , text
+    , time
+    , tomland
+
+  exposed-modules:
+    Control.Effect.Terminal
+    Control.Effect.Time
+    Data.Algebra.Boolean
+    HI.Cli
+    HI.Cli.Options
+    HI.Config
+    HI.Context
+    HI.Errors
+    HI.Optionals
+    HI.Template
+    HI.Template.Config
+    HI.Types
+    HI.Utils
+
+  other-modules:   Paths_HI
+  hs-source-dirs:  src
+
+test-suite HI-test
+  import:         common-attrs
+  type:           exitcode-stdio-1.0
+  build-depends:
+    , HI
+    , hspec
+    , QuickCheck
+    , quickcheck-text
+
+  hs-source-dirs: test
+  main-is:        Spec.hs
+
+executable hi
+  import:         common-attrs
+  build-depends:  HI
+  hs-source-dirs: app
+  main-is:        Main.hs
