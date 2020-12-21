@@ -1,0 +1,65 @@
+cabal-version: 3.0
+name:          {{ project }}
+version:       {{ version }}
+
+-- synopsis:
+-- description:
+-- category:
+-- license:
+license-file:  LICENSE
+author:        {{ name }}
+maintainer:    {{ name }} <{{ email }}>
+copyright:     Copyright (c) {{ name }} {{ year }}
+stability:     alpha
+homepage:      https://github.com/{{ github_username }}/{{ project }}
+bug-reports:   https://github.com/{{ github_username }}/{{ project }}/issues
+
+common common-attrs
+  build-depends:
+    , base           >=4.10 && <5
+  
+  default-language:   Haskell2010
+
+library
+  import:          common-attrs
+  build-depends:
+
+  exposed-modules:
+
+  other-modules:
+  hs-source-dirs:  src
+
+{{#exe}}
+executable {{ project }}
+  import:          common-attrs
+  build-depends:
+    , {{ project }}
+
+  hs-source-dirs:  app
+  main-is:         Main.hs
+
+{{/exe}}
+{{#test}}
+test-suite {{ project }}-test
+  import:          common-attrs
+  type:            exitcode-stdio-1.0
+  build-depends:
+    , {{ project }}
+
+  hs-source-dirs:  test
+  main-is:         Spec.hs
+
+{{/test}}
+{{#bench}}
+benchmark {{ project }}-bench
+  import:          common-attrs
+  type:            exitcode-stdio-1.0
+  build-depends:
+    , {{ project }}
+
+  hs-source-dirs:  benchmark
+  main-is:         Bench.hs
+{{/bench}}
+source-repository head
+  type:     git
+  location: https://github.com/{{ github_username }}/{{ project }}

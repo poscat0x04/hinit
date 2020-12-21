@@ -1,0 +1,69 @@
+desc = "Generic haskell template"
+ignores = []
+tags = ["haskell"]
+
+[[options]]
+default = "0.1.0"
+desc = "the starting version number"
+name = "version"
+
+[[options]]
+default = true
+desc = "whether to add nix related files"
+name = "nix"
+
+[[options]]
+default = false
+desc = "whether to enable executable"
+name = "exe"
+
+[[options]]
+default = true
+desc = "whether to enable test"
+name = "test"
+
+[[options]]
+default = false
+desc = "whether to enable benchmark"
+name = "bench"
+
+[[options]]
+default = true
+desc = """\
+    whether to include cabal project related files such as cabal.project, set this to \
+    false if you are trying to create a package inside a multi-package project
+    """
+name = "isProject"
+
+[[optionals]]
+ignores = [
+  "cabal.project",
+  ".gitignore",
+  "hie.yaml",
+  "flake.nix",
+]
+when = "!isProject"
+
+[[optionals]]
+ignores = [
+  "benchmark/",
+]
+when = "!bench"
+
+[[optionals]]
+ignores = [
+  "test/",
+]
+when = "!test"
+
+[[optionals]]
+ignores = [
+  "app/",
+]
+when = "!exe"
+
+[[optionals]]
+ignores = [
+  "flake.nix",
+]
+when = "!nix"

@@ -1,0 +1,16 @@
+cradle:
+  cabal:
+    - path: "./src"
+      component: "lib:{{ project }}"
+    {{#test}}
+    - path: "./test"
+      component: "test:{{ project }}-test"
+    {{/test}}
+    {{#exe}}
+    - path: "./app"
+      component: "exe:{{ project }}"
+    {{/exe}}
+    {{#bench}}
+    - path: "./benchmark"
+      component: "bench:{{ project }}-bench"
+    {{/bench}}
