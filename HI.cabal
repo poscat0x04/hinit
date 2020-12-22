@@ -76,7 +76,7 @@ library
     , exceptions                   ^>=0.10.4
     , generic-lens                 ^>=2.0.0
     , Glob                         ^>=0.10.1
-    , haskeline                    ^>=0.8.0
+    , haskeline                    ^>=0.8.1
     , lens                         ^>=4.19
     , megaparsec                   ^>=9.0.0
     , mustache                     ^>=2.3.1
