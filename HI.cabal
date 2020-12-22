@@ -1,22 +1,25 @@
-cabal-version: 3.0
-name:          HI
-version:       0.1.0
+cabal-version:   3.0
+name:            HI
+version:         0.1.0
+synopsis:        Generic project initialization tool
+description:
+  HI is a generic project initialization tool similar to cookiecutter.
 
-synopsis:      Generic project initialization tool
-description:   HI is a generic project initialization tool similar to cookiecutter.
-category:      Cli
-license:       BSD-3-Clause
-license-file:  LICENSE
-author:        Poscat
-maintainer:    poscat@mail.poscat.moe
-copyright:     Copyright (c) Poscat 2020
-stability:     alpha
-homepage:      https://github.com/poscat0x04/HI
-bug-reports:   https://github.com/poscat0x04/HI/issues
+category:        Cli
+license:         BSD-3-Clause
+license-file:    LICENSE
+author:          Poscat
+maintainer:      Poscat <poscat@mail.poscat.moe>
+copyright:       Copyright (c) Poscat 2020
+stability:       alpha
+homepage:        https://github.com/poscat0x04/HI
+bug-reports:     https://github.com/poscat0x04/HI/issues
 extra-doc-files:
-  README.md
   CHANGELOG.md
-data-dir:      data
+  README.md
+
+tested-with:     GHC ==8.10.2
+data-dir:        data
 data-files:
   licenses/*.txt
   templates/haskell/**/*.hs
@@ -30,9 +33,9 @@ data-files:
 
 common common-attrs
   build-depends:
-    , base           >=4.10 && <5
-    , fused-effects
-    , path-io
+    , base           >=4.10  && <5
+    , fused-effects  ^>=1.1.1
+    , path-io        ^>=1.6.2
 
   default-language:   Haskell2010
   default-extensions:
@@ -67,28 +70,28 @@ common common-attrs
 library
   import:          common-attrs
   build-depends:
-    , containers
-    , directory
-    , exceptions
-    , generic-lens
-    , Glob
-    , haskeline
-    , lens
-    , megaparsec
-    , mustache
-    , optparse-applicative
-    , parsec
-    , parser-combinators
-    , path
-    , prettyprinter
-    , prettyprinter-ansi-terminal
-    , string-interpolate
-    , text
-    , time
-    , tomland
-    , Cabal
-    , spdx
-    , spdx-license
+    , Cabal                        ^>=3.2.0
+    , containers                   ^>=0.6.2
+    , directory                    ^>=1.3.6
+    , exceptions                   ^>=0.10.4
+    , generic-lens                 ^>=2.0.0
+    , Glob                         ^>=0.10.1
+    , haskeline                    ^>=0.8.0
+    , lens                         ^>=4.19
+    , megaparsec                   ^>=9.0.0
+    , mustache                     ^>=2.3.1
+    , optparse-applicative         >=0.15.1 && <1.17
+    , parsec                       ^>=3.1.14
+    , parser-combinators           ^>=1.2.1
+    , path                         >=0.7.0  && <0.9
+    , prettyprinter                >=1.6.2  && <1.8
+    , prettyprinter-ansi-terminal  ^>=1.1.2
+    , spdx                         ^>=1.0.0
+    , spdx-license                 ^>=0.1.0
+    , string-interpolate           ^>=0.3.0
+    , text                         ^>=1.2.3
+    , time                         >=1.9.3  && <1.12
+    , tomland                      ^>=1.3.1
 
   exposed-modules:
     Control.Effect.Terminal
@@ -99,8 +102,8 @@ library
     HI.Config
     HI.Context
     HI.Errors
-    HI.Optionals
     HI.License
+    HI.Optionals
     HI.Template
     HI.Template.Config
     HI.Types
@@ -114,8 +117,6 @@ test-suite HI-test
   type:           exitcode-stdio-1.0
   build-depends:
     , HI
-    , hspec
-    , QuickCheck
     , quickcheck-text
 
   hs-source-dirs: test
