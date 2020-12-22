@@ -13,6 +13,9 @@ copyright:     Copyright (c) {{ name }} {{ year }}
 stability:     alpha
 homepage:      https://github.com/{{ github_username }}/{{ project }}
 bug-reports:   https://github.com/{{ github_username }}/{{ project }}/issues
+extra-doc-files:
+  README.md
+  CHANGELOG.md
 
 common common-attrs
   build-depends:
