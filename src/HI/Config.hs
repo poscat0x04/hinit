@@ -10,11 +10,15 @@ import Control.Effect.Terminal
 import Control.Effect.Throw
 import Control.Effect.Time as T
 import qualified Data.Map.Strict as M
-import Data.Text (Text, pack)
+import Data.String.Interpolate
+import Data.Text (Text, pack, unpack)
 import qualified Data.Text.IO as T
 import Data.Time.Calendar
 import Data.Time.Format.ISO8601
 import Data.Time.LocalTime
+import Distribution.Parsec
+import Distribution.Pretty
+import Distribution.SPDX.Extra
 import GHC.Generics
 import HI.Errors
 import HI.Types
@@ -22,15 +26,46 @@ import Path
 import Path.IO
 import System.IO
 import Toml hiding (Bool, Text, day)
+import qualified Toml as T
 
 data Config = Config
   { name :: Text,
     email :: Text,
     ghUserName :: Text,
+    license :: Maybe LicenseId,
     vcs :: Maybe VCS,
     defAttrs :: Context
   }
   deriving (Show, Eq, Generic)
+
+configCodec :: TomlCodec Config
+configCodec =
+  Config
+    <$> text "name" .= name
+    <*> text "email" .= email
+    <*> text "github_username" .= ghUserName
+    <*> dioptional (licenseIdCodec "license") .= license
+    <*> vcsCodec "vcs" .= vcs
+    <*> contextCodec .= defAttrs
+
+licenseToToml :: LicenseId -> AnyValue
+licenseToToml license = AnyValue $ T.Text $ pack $ prettyShow license
+
+tomlToLicense :: AnyValue -> Either TomlBiMapError LicenseId
+tomlToLicense (AnyValue v)
+  | T.Text t <- v =
+    case eitherParsec (unpack t) of
+      Left err ->
+        Left $
+          ArbitraryError [i|Failed to parse license: #{err}|]
+      Right l -> pure l
+  | otherwise = Left $ WrongValue $ MatchError TText (AnyValue v)
+
+_LicenseId :: TomlBiMap LicenseId AnyValue
+_LicenseId = invert $ prism licenseToToml tomlToLicense
+
+licenseIdCodec :: Key -> TomlCodec LicenseId
+licenseIdCodec = match _LicenseId
 
 askConfig :: forall sig m. Has Terminal sig m => m Config
 askConfig = do
@@ -43,6 +78,7 @@ askConfig = do
   ghUserName <- askText
   let vcs = Just Git
   let defAttrs = mempty
+  let license = Nothing
   pure Config {..}
   where
     askText :: m Text
@@ -83,15 +119,6 @@ getConfig = do
       config <- askConfig
       sendIO $ T.writeFile (fromAbsFile configFile) $ encode configCodec config
       pure config
-
-configCodec :: TomlCodec Config
-configCodec =
-  Config
-    <$> text "name" .= name
-    <*> text "email" .= email
-    <*> text "github_username" .= ghUserName
-    <*> vcsCodec "vcs" .= vcs
-    <*> contextCodec .= defAttrs
 
 -- | Build two 'Context's from a program config
 buildContextFromConfig :: Has Time sig m => Text -> Config -> m (Context, Context)

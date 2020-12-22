@@ -16,6 +16,7 @@ import HI.Cli.Options
 import HI.Config
 import HI.Context
 import HI.Errors
+import HI.License
 import HI.Optionals
 import HI.Template
 import Path.IO
@@ -74,3 +75,6 @@ app' = do
               ignores <- ignoredFiles ctx templateConfig
               let mustacheCtx = fromContext ctx
               initFromTemplate ignores mustacheCtx path projectPath
+              case license config of
+                Just license' -> initializeLicense license' ctx projectPath
+                Nothing -> pure ()

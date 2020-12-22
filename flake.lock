@@ -17,11 +17,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1608214918,
-        "narHash": "sha256-FrqEuGeRsNMtTz9s28uMXnpue3s9jur0RjgohvLiz0U=",
+        "lastModified": 1608557166,
+        "narHash": "sha256-N9n82yV/9CCAuJtKPg3EcHR1wZCTGciwrK1TaWYFDME=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "62f5b921c5d9a653d497e46f266eccca252d0fdc",
+        "rev": "2a058487cb7a50e7650f1657ee0151a19c59ec3b",
         "type": "github"
       },
       "original": {
@@ -34,7 +34,32 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "spdx-license": "spdx-license"
+      }
+    },
+    "spdx-license": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1608621700,
+        "narHash": "sha256-6zuXXs8HhkYWtC1JFtxLzZAe72BkuA5rEcZumHnFifg=",
+        "owner": "poscat0x04",
+        "repo": "spdx-license",
+        "rev": "1d6e212451ac00f1223d7059f591a4799455816a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "poscat0x04",
+        "ref": "0.1.0",
+        "repo": "spdx-license",
+        "type": "github"
       }
     }
   },
