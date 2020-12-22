@@ -110,6 +110,7 @@ library
     HI.Utils
 
   other-modules:   Paths_HI
+  autogen-modules: Paths_HI
   hs-source-dirs:  src
 
 test-suite HI-test
