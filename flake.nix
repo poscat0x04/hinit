@@ -1,4 +1,6 @@
 {
+  description = "A generic project initialization tool written in Haskell";
+
   inputs.nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
   inputs.flake-utils.url = github:poscat0x04/flake-utils;
   inputs.spdx-license = {

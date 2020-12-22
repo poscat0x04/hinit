@@ -2,9 +2,9 @@ cabal-version: 3.0
 name:          HI
 version:       0.1.0
 
--- synopsis:
--- description:
--- category:
+synopsis:      Generic project initialization tool
+description:   HI is a generic project initialization tool similar to cookiecutter.
+category:      Cli
 license:       BSD-3-Clause
 license-file:  LICENSE
 author:        Poscat
@@ -13,6 +13,9 @@ copyright:     Copyright (c) Poscat 2020
 stability:     alpha
 homepage:      https://github.com/poscat0x04/HI
 bug-reports:   https://github.com/poscat0x04/HI/issues
+extra-doc-files:
+  README.md
+  CHANGELOG.md
 data-dir:      data
 data-files:
   licenses/*.txt
