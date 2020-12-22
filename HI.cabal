@@ -14,6 +14,15 @@ stability:     alpha
 homepage:      https://github.com/poscat0x04/HI
 bug-reports:   https://github.com/poscat0x04/HI/issues
 data-dir:      data
+data-files:
+  templates/haskell/**/*.hs
+  templates/haskell/*.cabal
+  templates/haskell/*.md
+  templates/haskell/.gitignore
+  templates/haskell/cabal.project
+  templates/haskell/hie.yaml
+  templates/haskell/src/.gitkeep
+  templates/haskell/template.toml
 
 common common-attrs
   build-depends:

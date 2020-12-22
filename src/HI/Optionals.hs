@@ -18,7 +18,9 @@ defaultIgnores =
     ".git",
     ".pijul",
     ".hg",
-    "_darcs"
+    "_darcs",
+    ".gitkeep",
+    "**/.gitkeep"
   ]
 
 parseExpr :: Has (Throw ExprParseError) sig m => Text -> m Expr
