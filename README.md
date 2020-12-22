@@ -74,15 +74,15 @@ Global configuration is read from `$XDG_CONFIG_HOME/hi/config.toml`. If this fil
 
 Top-level configuration options:
 
-- name :: string\
+- `name :: string`\
   required, your full name, used in `LICENSE` files and some default templates
-- github_username :: string\
+- `github_username :: string`\
   required, your github username, used in some default templates
-- email :: string\
+- `email :: string`\
   required, your email, used in some default templates
-- license :: string\
+- `license :: string`\
   optional, the default license, must be a valid [SPDX license identifier](https://spdx.org/licenses/).
-- vcs :: string\
+- `vcs :: string`\
   optional, the version control tool, can by any string but `Git`, `Darcs`, `Mercurial`, `Pijul` has special meanings (`hi` will call these vcs tools after the project has been initialized)
 
 Addtionaly, default values of variables can be set under the table `[custom]`, note that the value must be either a bool or a piece of text.
@@ -95,29 +95,29 @@ Unlike cookiecutter, hi uses [mustache](https://mustache.github.io/), a much sim
 
 Every template is required to have a config file `template.toml` and here are its configuration options:
 
-- desc :: string\
+- `desc :: string`\
   optional, description for the template.
-- ignores :: [string]\
+- `ignores :: [string]`\
   required, ignored files, can use [globbing syntax](https://hackage.haskell.org/package/Glob-0.10.1/docs/System-FilePath-Glob.html#v:compile). Note that when judging whether a file should be ignored, it is the file's path relative the the root of the template that will be matched against the patterns specified here, not just the file name.
-- tags :: [string]\
+- `tags :: [string]`\
   required, tags (duh), currently this is not being used by any command.
-- options :: [array of tables](https://toml.io/en/v1.0.0-rc.3#array-of-tables)\
+- `options :: [array of tables](https://toml.io/en/v1.0.0-rc.3#array-of-tables)`\
   parameters of the template.\
   suboptions:
-    - name :: string\
+    - `name :: string`\
       required, the name of the option.
-    - desc :: string\
+    - `desc :: string`\
       optional, the description for this option.
-    - type :: string\
+    - `type :: string`\
       rquired if `default` is not set, otherwise it will be ignored completely, the type of this option, currently only supports `"bool"` and `"text"`.
-    - default :: string | bool\
+    - `default :: string | bool`\
       optional, the default value for this option, if this is not set then the program will ask for user input when initializing a project from this template
-- optionals :: array of tables\
+- `optionals :: array of tables`\
   optionally ignored files, when the expression specified by `when` evaluates to true, the `ignores` field will be merged into the top-level ignored files.\
   suboptions:
-    - when :: string\
+    - `when :: string`\
       required, an arbitrary boolean expression constructed from variables (must contain only alphanumeric characters), negations (`!` or `¬`), conjunctions (`&` or `∧`) and disjunctions (`|` or `∨`), can have parenthesis.
-    - ignores :: [string]\
+    - `ignores :: [string]`\
       required, see the description of the top-level `ignores` option.
 
 When initializing from a template, both the the file content and the file name will be read as mustache templates. After performing a substitution, the new file will be written to the corresponding location inside the project directory.
