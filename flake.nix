@@ -30,7 +30,7 @@
               haskell-language-server
               cabal-install
             ];
-            hi = generateOptparseApplicativeCompletion "hi" hi-base;
+            hi = generateOptparseApplicativeCompletion "hi" (justStaticExecutables hi-base);
           };
     };
 }
