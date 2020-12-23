@@ -130,6 +130,6 @@ You can also take a look at [bundled templates](https://github.com/poscat0x04/hi
 
 `hi` will set the values for some special variables and can overwrite user configs. These names should not be used in your `options`. These special variables include:
 
-- `name`, `email`, `github_usernmae`
+- `name`, `email`, `github_usernmae`, `license`
 - `year`, `month`, `day`, `iso8601`: system time
 - `project`: the name of the project that is trying to create.

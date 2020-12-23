@@ -5,7 +5,7 @@ version:       {{ version }}
 -- synopsis:
 -- description:
 -- category:
--- license:
+license:       {{ license }}
 license-file:  LICENSE
 author:        {{ name }}
 maintainer:    {{ name }} <{{ email }}>

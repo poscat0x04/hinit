@@ -137,6 +137,7 @@ buildContextFromConfig project Config {..} = do
           ("github_username", Text ghUserName),
           ("project", Text project)
         ]
+          ++ maybe [] (\l -> pure ("license", Text $ pack $ prettyShow l)) license
   pure (M.fromList overrides, defAttrs)
   where
     show' :: Show a => a -> Text
