@@ -1,6 +1,6 @@
 {-# LANGUAGE QuasiQuotes #-}
 
-module HI.Template where
+module Hinit.Template where
 
 import Control.Effect.Lift
 import Control.Effect.Throw
@@ -15,13 +15,13 @@ import Data.Text (Text, pack, unpack)
 import qualified Data.Text.IO as T
 import Data.Text.Prettyprint.Doc
 import GHC.Generics
-import HI.Errors
-import HI.Template.Config
-import HI.Types
-import HI.Utils
+import Hinit.Errors
+import Hinit.Template.Config
+import Hinit.Types
+import Hinit.Utils
 import Path
 import Path.IO
-import Paths_HI
+import Paths_hinit
 import System.FilePath.Glob
 import Text.Mustache hiding (Template)
 import Text.Mustache.Types (Value)

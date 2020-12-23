@@ -11,14 +11,14 @@ import Control.Effect.Time
 import Control.Monad
 import Control.Monad.IO.Class
 import Data.Function
-import HI.Cli
-import HI.Cli.Options
-import HI.Config
-import HI.Context
-import HI.Errors
-import HI.License
-import HI.Optionals
-import HI.Template
+import Hinit.Cli
+import Hinit.Cli.Options
+import Hinit.Config
+import Hinit.Context
+import Hinit.Errors
+import Hinit.License
+import Hinit.Optionals
+import Hinit.Template
 import Path.IO
 import System.IO
 

@@ -5,7 +5,7 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE TupleSections #-}
 
-module HI.Template.Config where
+module Hinit.Template.Config where
 
 import Control.Applicative
 import Control.Lens ((^.), _1, _2, _3)

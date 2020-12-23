@@ -1,8 +1,8 @@
 cradle:
   cabal:
     - path: "./src"
-      component: "lib:HI"
+      component: "lib:Hinit"
     - path: "./test"
-      component: "test:HI-test"
+      component: "test:Hinit-test"
     - path: "./app"
-      component: "exe:HI"
+      component: "exe:hi"

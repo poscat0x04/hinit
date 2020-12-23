@@ -1,4 +1,4 @@
-module HI.Utils where
+module Hinit.Utils where
 
 import Data.Text (Text)
 import Data.Text.Prettyprint.Doc

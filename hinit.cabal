@@ -1,9 +1,9 @@
 cabal-version:   3.0
-name:            HI
+name:            hinit
 version:         0.1.0
 synopsis:        Generic project initialization tool
 description:
-  HI is a generic project initialization tool similar to cookiecutter.
+  hinit is a generic project initialization tool similar to cookiecutter.
 
 category:        Cli
 license:         BSD-3-Clause
@@ -12,8 +12,8 @@ author:          Poscat
 maintainer:      Poscat <poscat@mail.poscat.moe>
 copyright:       Copyright (c) Poscat 2020
 stability:       alpha
-homepage:        https://github.com/poscat0x04/HI
-bug-reports:     https://github.com/poscat0x04/HI/issues
+homepage:        https://github.com/poscat0x04/hinit
+bug-reports:     https://github.com/poscat0x04/hinit/issues
 extra-doc-files:
   CHANGELOG.md
   README.md
@@ -97,27 +97,27 @@ library
     Control.Effect.Terminal
     Control.Effect.Time
     Data.Algebra.Boolean
-    HI.Cli
-    HI.Cli.Options
-    HI.Config
-    HI.Context
-    HI.Errors
-    HI.License
-    HI.Optionals
-    HI.Template
-    HI.Template.Config
-    HI.Types
-    HI.Utils
+    Hinit.Cli
+    Hinit.Cli.Options
+    Hinit.Config
+    Hinit.Context
+    Hinit.Errors
+    Hinit.License
+    Hinit.Optionals
+    Hinit.Template
+    Hinit.Template.Config
+    Hinit.Types
+    Hinit.Utils
 
-  other-modules:   Paths_HI
-  autogen-modules: Paths_HI
+  other-modules:   Paths_hinit
+  autogen-modules: Paths_hinit
   hs-source-dirs:  src
 
-test-suite HI-test
+test-suite hinit-test
   import:         common-attrs
   type:           exitcode-stdio-1.0
   build-depends:
-    , HI
+    , hinit
     , quickcheck-text
 
   hs-source-dirs: test
@@ -125,10 +125,10 @@ test-suite HI-test
 
 executable hi
   import:         common-attrs
-  build-depends:  HI
+  build-depends:  hinit
   hs-source-dirs: app
   main-is:        Main.hs
 
 source-repository head
   type:     git
-  location: https://github.com/poscat0x04/HI
+  location: https://github.com/poscat0x04/hinit

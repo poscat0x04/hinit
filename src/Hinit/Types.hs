@@ -1,6 +1,6 @@
 {-# LANGUAGE QuasiQuotes #-}
 
-module HI.Types where
+module Hinit.Types where
 
 import Data.Map.Strict (Map)
 import Data.String.Interpolate

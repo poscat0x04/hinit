@@ -5,7 +5,7 @@
 {-# LANGUAGE ExistentialQuantification #-}
 {-# LANGUAGE QuasiQuotes #-}
 
-module HI.Errors where
+module Hinit.Errors where
 
 import Control.Algebra
 import Control.Effect.Lift
@@ -17,7 +17,7 @@ import Data.Text.Prettyprint.Doc
 import Data.Text.Prettyprint.Doc.Render.Terminal
 import Data.Void
 import GHC.Generics
-import HI.Utils
+import Hinit.Utils
 import Path
 import System.Exit
 import System.IO

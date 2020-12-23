@@ -19,8 +19,8 @@
         in
           with pkgs;
           {
-            devShell = hi-dev.envFunc { withHoogle = true; };
-            defaultPackage = hi;
+            devShell = hinit-dev.envFunc { withHoogle = true; };
+            defaultPackage = hinit;
           }
     ) // {
       overlay = self: super:
@@ -32,16 +32,16 @@
               spdx-license = pkgs.spdx-license;
             };
           };
-          hi-base = hpkgs.callCabal2nix "HI" ./. {};
+          hinit-base = hpkgs.callCabal2nix "hinit" ./. {};
         in
           with super; with haskell.lib;
           {
-            inherit hi-base;
-            hi-dev = addBuildTools hi-base [
+            inherit hinit-base;
+            hinit-dev = addBuildTools hinit-base [
               haskell-language-server
               cabal-install
             ];
-            hi = generateOptparseApplicativeCompletion "hi" (justStaticExecutables hi-base);
+            hinit = generateOptparseApplicativeCompletion "hi" (justStaticExecutables hinit-base);
           };
     };
 }

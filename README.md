@@ -1,4 +1,4 @@
-# HI
+# hinit 
 
 `hi` is a generic project initialization tool that is written in Haskell. It is similar to cookiecutter in functionality.
 
@@ -19,7 +19,7 @@ $ cabal install hi
 To build `hi`, run:
 
 ```
-$ nix build github:poscat0x04/HI
+$ nix build github:poscat0x04/hinit
 ```
 
 After that, you could install hi to your user profile by running:
@@ -122,7 +122,7 @@ Every template is required to have a config file `template.toml` and here are it
 
 When initializing from a template, both the the file content and the file name will be read as mustache templates. After performing a substitution, the new file will be written to the corresponding location inside the project directory.
 
-You can also take a look at [bundled templates](https://github.com/poscat0x04/HI/tree/master/data/templates).
+You can also take a look at [bundled templates](https://github.com/poscat0x04/hinit/tree/master/data/templates).
 
 ### Special variables names
 

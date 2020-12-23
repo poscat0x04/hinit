@@ -1,4 +1,4 @@
-module HI.Optionals where
+module Hinit.Optionals where
 
 import Control.Effect.Throw
 import Data.Algebra.Boolean
@@ -6,9 +6,9 @@ import qualified Data.List.NonEmpty as NE
 import qualified Data.Map.Strict as M
 import Data.Maybe
 import Data.Text (Text)
-import HI.Errors
-import HI.Template.Config
-import HI.Types
+import Hinit.Errors
+import Hinit.Template.Config
+import Hinit.Types
 import System.FilePath.Glob
 import Text.Megaparsec
 

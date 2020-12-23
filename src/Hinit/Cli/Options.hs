@@ -1,16 +1,16 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE StrictData #-}
 
-module HI.Cli.Options where
+module Hinit.Cli.Options where
 
 import Control.Effect.Lift
 import Data.String.Interpolate
 import Data.Text (Text)
 import Data.Version
 import GHC.Generics
-import HI.Types
+import Hinit.Types
 import Options.Applicative
-import Paths_HI
+import Paths_hinit
 
 data Op
   = Set Text Val
@@ -113,7 +113,7 @@ cmds =
     ( fullDesc
         <> progDesc
           "hi is a generic project scaffolding tool that uses mustache for templating.\n\
-          \For more documentation, see https://github.com/poscat0x04/HI"
+          \For more documentation, see https://github.com/poscat0x04/hinit"
         <> header "hi - Project scaffolding tool writting in Haskell"
     )
 

@@ -1,17 +1,17 @@
 {-# LANGUAGE OverloadedLabels #-}
 
-module HI.Context where
+module Hinit.Context where
 
 import Control.Algebra
 import Control.Effect.Terminal
 import Control.Effect.Time
 import qualified Data.Map.Strict as M
 import Data.Text (Text)
-import HI.Cli
-import HI.Cli.Options
-import HI.Config
-import HI.Template.Config
-import HI.Types
+import Hinit.Cli
+import Hinit.Cli.Options
+import Hinit.Config
+import Hinit.Template.Config
+import Hinit.Types
 
 opsToCtx :: [Op] -> Context
 opsToCtx = M.fromList . map toPair

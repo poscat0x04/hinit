@@ -2,7 +2,7 @@
 {-# LANGUAGE QuasiQuotes #-}
 
 -- | Global configuration
-module HI.Config where
+module Hinit.Config where
 
 import Control.Algebra
 import Control.Effect.Lift
@@ -20,8 +20,8 @@ import Distribution.Parsec
 import Distribution.Pretty
 import Distribution.SPDX.Extra
 import GHC.Generics
-import HI.Errors
-import HI.Types
+import Hinit.Errors
+import Hinit.Types
 import Path
 import Path.IO
 import System.IO

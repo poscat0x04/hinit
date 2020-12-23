@@ -1,6 +1,6 @@
 {-# LANGUAGE QuasiQuotes #-}
 
-module HI.Cli where
+module Hinit.Cli where
 
 import Control.Effect.Lift
 import Control.Effect.Terminal
@@ -9,10 +9,10 @@ import Data.Maybe
 import Data.String.Interpolate
 import Data.Text (Text, unpack)
 import Data.Text.Prettyprint.Doc
-import HI.Errors
-import HI.Template
-import HI.Types
-import HI.Utils
+import Hinit.Errors
+import Hinit.Template
+import Hinit.Types
+import Hinit.Utils
 import Path
 import Prettyprinter.Render.Terminal
 import System.IO

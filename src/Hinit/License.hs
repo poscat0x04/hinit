@@ -1,6 +1,6 @@
 {-# LANGUAGE QuasiQuotes #-}
 
-module HI.License where
+module Hinit.License where
 
 import Control.Effect.Lift
 import Data.Map.Strict (Map)
@@ -12,9 +12,9 @@ import qualified Data.Text.IO as T
 import Distribution.Pretty
 import Distribution.SPDX.Extra hiding (License)
 import Distribution.SPDX.Template
-import HI.Types
+import Hinit.Types
 import Path
-import Paths_HI
+import Paths_hinit
 import Text.Megaparsec
 
 lookupT :: Text -> Context -> Maybe Text
