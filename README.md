@@ -1,5 +1,7 @@
 # hinit
 
+[![Hackage](https://img.shields.io/hackage/v/hinit.svg)](http://hackage.haskell.org/package/hinit)
+
 `hi` is a generic project initialization tool that is written in Haskell. It is similar to cookiecutter in functionality.
 
 ## Installation
