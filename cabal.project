@@ -1,6 +1,6 @@
 packages: .
 
-package Hinit
+package hinit
   ghc-options: -Wall
                -Wincomplete-uni-patterns
                -Wincomplete-record-updates
