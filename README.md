@@ -1,4 +1,4 @@
-# hinit 
+# hinit
 
 `hi` is a generic project initialization tool that is written in Haskell. It is similar to cookiecutter in functionality.
 
@@ -101,7 +101,7 @@ Every template is required to have a config file `template.toml` and here are it
   required, ignored files, can use [globbing syntax](https://hackage.haskell.org/package/Glob-0.10.1/docs/System-FilePath-Glob.html#v:compile). Note that when judging whether a file should be ignored, it is the file's path relative the the root of the template that will be matched against the patterns specified here, not just the file name.
 - `tags :: [string]`\
   required, tags (duh), currently this is not being used by any command.
-- `options :: [array of tables](https://toml.io/en/v1.0.0-rc.3#array-of-tables)`\
+- `options :: array of tables`\
   parameters of the template.\
   suboptions:
     - `name :: string`\
