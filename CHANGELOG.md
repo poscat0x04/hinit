@@ -1,6 +1,6 @@
 # hinit
 
-## 0.2.0
+## 0.2.0 (2020-12-24)
 
 * Add nix flake to the bundled haskell template
 * Add `license` to context overrides
