@@ -68,7 +68,7 @@ copyFileFromTemplate ctx base tgtbase src = do
   let srcFilename = filename src
   let srcParentDir = parent src
   case compileTemplate "" (pack $ fromRelFile srcFilename) of
-    Left e -> throwError $ TemplateParseError src True e
+    Left e -> throwError $ TemplateParseError src True (pack $ show e)
     Right fileNameTmpl -> do
       let (errs, tgtFileNameRaw) = checkedSubstitute fileNameTmpl ctx
       unless (null errs) $
@@ -83,7 +83,7 @@ copyFileFromTemplate ctx base tgtbase src = do
             let tgtFilePath = tgtbase </> srcParentDir </> tgtFileName
             srcFileContent <- sendIO $ T.readFile (toFilePath srcFilePath)
             case compileTemplate (toFilePath src) srcFileContent of
-              Left e' -> throwError $ TemplateParseError src False e'
+              Left e' -> throwError $ TemplateParseError src False (pack $ show e')
               Right fileTmpl -> do
                 let (errs', tgtFileContent) = checkedSubstitute fileTmpl ctx
                 unless (null errs') $
@@ -111,7 +111,7 @@ copyDirFromTemplate ctx _ tgtbase src = do
   let srcDirName = dirname src
   let srcParentDir = parent src
   case compileTemplate "" (pack $ fromRelDir srcDirName) of
-    Left e -> throwError $ TemplateParseError src True e
+    Left e -> throwError $ TemplateParseError src True (pack $ show e)
     Right fileNameTmpl -> do
       let (errs, tgtFileNameRaw) = checkedSubstitute fileNameTmpl ctx
       unless (null errs) $

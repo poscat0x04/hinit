@@ -23,7 +23,6 @@ import System.Exit
 import System.IO
 import Text.Megaparsec.Error
 import Text.Mustache.Render
-import qualified Text.Parsec.Error as T
 import Toml.Codec.Error
 import Prelude hiding (print)
 
@@ -68,7 +67,7 @@ instance Pretty ConfigParseError where
 
 data MustacheError
   = forall a. RenderingError (Path Rel a) Bool [SubstitutionError]
-  | forall a. TemplateParseError (Path Rel a) Bool T.ParseError
+  | forall a. TemplateParseError (Path Rel a) Bool Text
   deriving (Show) via PrettyShow MustacheError
   deriving anyclass (Exception)
 
@@ -82,7 +81,7 @@ instance Pretty MustacheError where
     | (TemplateParseError p isFilename err) <- e =
       vsep
         [ [i|failed to parse the #{s isFilename} of file #{toFilePath p}:|],
-          indent 2 $ viaShow err
+          indent 2 $ pretty err
         ]
     where
       s :: Bool -> String

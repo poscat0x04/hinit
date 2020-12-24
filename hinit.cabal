@@ -81,7 +81,6 @@ library
     , megaparsec                   ^>=9.0.0
     , mustache                     ^>=2.3.1
     , optparse-applicative         >=0.15.1 && <1.17
-    , parsec                       ^>=3.1.14
     , parser-combinators           ^>=1.2.1
     , path                         >=0.7.0  && <0.9
     , prettyprinter                >=1.6.2  && <1.8

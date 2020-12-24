@@ -4,6 +4,7 @@
 
 * Add nix flake to the bundled haskell template
 * Add `license` to context overrides
+* Cut down on external dependencies (parsec, spdx)
 
 ## 0.1.0
 
