@@ -86,7 +86,6 @@ library
     , path                         >=0.7.0  && <0.9
     , prettyprinter                >=1.6.2  && <1.8
     , prettyprinter-ansi-terminal  ^>=1.1.2
-    , spdx                         ^>=1.0.0
     , spdx-license                 ^>=0.1.0
     , string-interpolate           ^>=0.3.0
     , text                         ^>=1.2.3

@@ -10,7 +10,7 @@ import Data.String.Interpolate
 import Data.Text (Text)
 import qualified Data.Text.IO as T
 import Distribution.Pretty
-import Distribution.SPDX.Extra hiding (License)
+import Distribution.SPDX (LicenseId)
 import Distribution.SPDX.Template
 import Hinit.Types
 import Path

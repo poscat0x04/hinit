@@ -18,7 +18,7 @@ import Data.Time.Format.ISO8601
 import Data.Time.LocalTime
 import Distribution.Parsec
 import Distribution.Pretty
-import Distribution.SPDX.Extra
+import Distribution.SPDX
 import GHC.Generics
 import Hinit.Errors
 import Hinit.Types
