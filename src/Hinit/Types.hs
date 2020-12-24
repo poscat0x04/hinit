@@ -4,7 +4,7 @@ module Hinit.Types where
 
 import Data.Map.Strict (Map)
 import Data.String.Interpolate
-import Data.Text (Text)
+import Data.Text (Text, unpack)
 import GHC.Generics
 import Text.Mustache
 import qualified Text.Mustache.Types as M
@@ -62,7 +62,14 @@ data VCS
   | Darcs
   | Pijul
   | Other Text
-  deriving (Show, Eq, Generic)
+  deriving (Eq, Generic)
+
+instance Show VCS where
+  show Git = "git"
+  show Mercurial = "mercurial"
+  show Darcs = "darcs"
+  show Pijul = "pijul"
+  show (Other t) = unpack t
 
 vcsToT :: VCS -> Text
 vcsToT v =

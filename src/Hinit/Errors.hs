@@ -17,10 +17,12 @@ import Data.Text.Prettyprint.Doc
 import Data.Text.Prettyprint.Doc.Render.Terminal
 import Data.Void
 import GHC.Generics
+import Hinit.Types
 import Hinit.Utils
 import Path
 import System.Exit
 import System.IO
+import System.Process
 import Text.Megaparsec.Error
 import Text.Mustache.Render
 import Toml.Codec.Error
@@ -123,10 +125,43 @@ instance Pretty ProjectAlreadExist where
   pretty (ProjectAlreadExist a) =
     [i|project #{a} already exists, to overwrite it use -f/--force|]
 
+newtype VcsCmdNotFound = VcsCmdNotFound VCS
+  deriving (Eq, Generic)
+  deriving (Show) via PrettyShow VcsCmdNotFound
+  deriving anyclass (Exception)
+
+instance Pretty VcsCmdNotFound where
+  pretty (VcsCmdNotFound vcs) =
+    [i|vcs tool #{vcs} was not installed even though it was specified in your config|]
+
+data ProcessExitFailure
+  = ProcessExitFailure CmdSpec Int String String
+  deriving (Eq, Generic)
+  deriving (Show) via PrettyShow ProcessExitFailure
+  deriving anyclass (Exception)
+
+instance Pretty ProcessExitFailure where
+  pretty (ProcessExitFailure cmd e out err) =
+    vsep
+      [ [i|process "#{prettyCmd cmd}" failed with exit code #{e}|],
+        "stdout:",
+        indent 2 $ pretty out,
+        "stderr:",
+        indent 2 $ pretty err
+      ]
+    where
+      prettyCmd (ShellCommand c) = c
+      prettyCmd (RawCommand c args) = unwords (c : args)
+
 prettyPrintError :: Has Terminal sig m => Doc AnsiStyle -> m ()
 prettyPrintError err = prettyPrint stderr doc
   where
     doc = (annotate (color Red) "Error" <> ":") <+> err
+
+prettyPrintWarning :: Has Terminal sig m => Doc AnsiStyle -> m ()
+prettyPrintWarning warning = prettyPrint stderr doc
+  where
+    doc = (annotate (color Yellow) "Warning" <> ":") <+> warning
 
 simpleHandler :: (Has Terminal sig m, Has (Lift IO) sig m, Pretty a) => a -> m ()
 simpleHandler a = do

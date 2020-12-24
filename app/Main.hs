@@ -18,7 +18,9 @@ import Hinit.Context
 import Hinit.Errors
 import Hinit.License
 import Hinit.Optionals
+import Hinit.Process
 import Hinit.Template
+import Hinit.Utils
 import Path.IO
 import System.IO
 
@@ -31,6 +33,7 @@ main =
     & runError' @MustacheError simpleHandler
     & runError' @TemplateNotFound simpleHandler
     & runError' @ProjectAlreadExist simpleHandler
+    & runError' @ProcessExitFailure simpleHandler
     & runTimeC
     & runTerminal
 
@@ -45,6 +48,7 @@ app' ::
     Has (Throw MustacheError) sig m,
     Has (Throw TemplateNotFound) sig m,
     Has (Throw ProjectAlreadExist) sig m,
+    Has (Throw ProcessExitFailure) sig m,
     Has Terminal sig m,
     Has Time sig m,
     MonadIO m
@@ -75,6 +79,7 @@ app' = do
               ignores <- ignoredFiles ctx templateConfig
               let mustacheCtx = fromContext ctx
               initFromTemplate ignores mustacheCtx path projectPath
-              case license config of
-                Just license' -> initializeLicense license' ctx projectPath
-                Nothing -> pure ()
+              whenJust (license config) $ \license' -> do
+                initializeLicense license' ctx projectPath
+              whenJust (vcs config) $ \vcs' -> do
+                initVCS vcs' projectPath
