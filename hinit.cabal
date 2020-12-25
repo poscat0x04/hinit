@@ -25,6 +25,7 @@ data-files:
   templates/haskell/**/*.hs
   templates/haskell/*.cabal
   templates/haskell/*.md
+  templates/haskell/*.nix
   templates/haskell/.gitignore
   templates/haskell/cabal.project
   templates/haskell/hie.yaml
