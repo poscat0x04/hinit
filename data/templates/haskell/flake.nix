@@ -10,7 +10,7 @@
         in
           with pkgs;
           {
-            devShell = {{ project }}-dev.envFunc {};
+            devShell = {{ project }}-dev.envFunc { withHoogle = true; };
             defaultPackage = {{ project }};
           }
     ) // {
