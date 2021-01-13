@@ -20,7 +20,7 @@
         let
           hpkgs = super.haskellPackages.override {
             overrides = hself: hsuper: {
-              haskeline = hsuper.haskeline_0_8_1_0;
+              haskeline = hsuper.haskeline_0_8_1_1;
             };
           };
           hinit-base = hpkgs.callCabal2nix "hinit" ./. {};
