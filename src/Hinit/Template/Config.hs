@@ -8,11 +8,11 @@
 module Hinit.Template.Config where
 
 import Control.Applicative
-import Control.Lens ((^.), _1, _2, _3)
-import Data.Generics.Labels ()
 import Data.String.Interpolate
 import Data.Text (Text, pack, unpack)
+import Data.Tuple.Optics
 import GHC.Generics
+import Optics.Operators
 import System.FilePath.Glob
   ( Pattern,
     compile,
