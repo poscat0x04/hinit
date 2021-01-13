@@ -3,7 +3,6 @@ module Hinit.Process where
 import Control.Effect.Lift
 import Control.Effect.Terminal
 import Control.Effect.Throw
-import Control.Monad
 import Data.Maybe
 import Data.Text.Prettyprint.Doc
 import Hinit.Errors
