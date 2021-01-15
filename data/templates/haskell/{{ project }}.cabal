@@ -1,21 +1,21 @@
-cabal-version: 3.0
-name:          {{ project }}
-version:       {{ version }}
+cabal-version:   3.0
+name:            {{ project }}
+version:         {{ version }}
 
 -- synopsis:
 -- description:
 -- category:
-license:       {{ license }}
-license-file:  LICENSE
-author:        {{ name }}
-maintainer:    {{ name }} <{{ email }}>
-copyright:     Copyright (c) {{ name }} {{ year }}
-stability:     alpha
-homepage:      https://github.com/{{ github_username }}/{{ project }}
-bug-reports:   https://github.com/{{ github_username }}/{{ project }}/issues
+license:         {{ license }}
+license-file:    LICENSE
+author:          {{ name }}
+maintainer:      {{ name }} <{{ email }}>
+copyright:       Copyright (c) {{ name }} {{ year }}
+stability:       alpha
+homepage:        https://github.com/{{ github_username }}/{{ project }}
+bug-reports:     https://github.com/{{ github_username }}/{{ project }}/issues
 extra-doc-files:
-  README.md
   CHANGELOG.md
+  README.md
 
 common common-attrs
   build-depends:
@@ -27,29 +27,37 @@ common common-attrs
     BangPatterns
     ConstraintKinds
     DataKinds
+    DefaultSignatures
     DeriveFoldable
     DeriveFunctor
     DeriveGeneric
     DeriveTraversable
+    DerivingStrategies
+    DuplicateRecordFields
     EmptyCase
     FlexibleContexts
     FlexibleInstances
     FunctionalDependencies
+    GADTs
+    GeneralizedNewtypeDeriving
     InstanceSigs
     KindSignatures
     LambdaCase
     MultiWayIf
+    NamedFieldPuns
     OverloadedStrings
     PartialTypeSignatures
     PatternSynonyms
+    QuantifiedConstraints
     RecordWildCards
-    DuplicateRecordFields
+    RoleAnnotations
     ScopedTypeVariables
+    StandaloneKindSignatures
     TupleSections
     TypeApplications
     TypeFamilies
+    TypeFamilyDependencies
     TypeOperators
-    UnicodeSyntax
     ViewPatterns
 
 library
