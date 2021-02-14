@@ -2,6 +2,7 @@
 
 ## 0.2.1
 
+* Switch to optics-core
 * Various changes to the bundled haskell template
 * Use the `unsafeRender` function provided by spdx-license
 
