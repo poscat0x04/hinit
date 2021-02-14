@@ -35,6 +35,11 @@ desc = """\
     """
 name = "isProject"
 
+[[options]]
+default = true
+desc = "whether to add an \"expand src\" comment used by cabal-fmt"
+name = "cabal-fmt"
+
 [[optionals]]
 ignores = [
   "cabal.project",

@@ -64,6 +64,9 @@ library
   import:          common-attrs
   build-depends:
 
+{{#cabal-fmt}}
+  -- cabal-fmt: expand src
+{{/cabal-fmt}}
   exposed-modules:
 
   other-modules:
