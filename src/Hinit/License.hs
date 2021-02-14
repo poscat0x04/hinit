@@ -46,10 +46,8 @@ buildSPDXContext ctx = fromMaybe mempty mCtx
 initializeLicense ::
   (Has (Lift IO) sig m) => LicenseId -> Context -> Path a Dir -> m ()
 initializeLicense licenseId ctx projectPath = do
-  let targetFile = projectPath </> [relfile|LICENSE|]
   licenseFile <- getLicenseFile licenseId
-  let spdxCtx = buildSPDXContext ctx
-  let mRendered = render spdxCtx licenseFile
-  case mRendered of
-    Right rendered -> sendIO $ T.writeFile (toFilePath targetFile) rendered
-    Left e -> error [i|impossible, failed to render license: #{e}|]
+  let targetFile = projectPath </> [relfile|LICENSE|]
+      spdxCtx = buildSPDXContext ctx
+      rendered = unsafeRender spdxCtx licenseFile
+  sendIO $ T.writeFile (toFilePath targetFile) rendered

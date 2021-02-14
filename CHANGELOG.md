@@ -1,5 +1,10 @@
 # hinit
 
+## 0.2.1
+
+* Various changes to the bundled haskell template
+* Use the `unsafeRender` function provided by spdx-license
+
 ## 0.2.0 (2020-12-24)
 
 * Add nix flake to the bundled haskell template
