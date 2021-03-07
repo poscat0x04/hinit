@@ -29,7 +29,7 @@
           {
             inherit hinit-base;
             hinit-dev = addBuildTools hinit-base [
-              haskell-language-server
+              (haskell-language-server.override { supportedGhcVersions = [ "8104" ]; })
               cabal-install
             ];
             hinit = generateOptparseApplicativeCompletion "hi" (justStaticExecutables hinit-base);
