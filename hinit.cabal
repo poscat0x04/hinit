@@ -1,6 +1,6 @@
 cabal-version:   3.0
 name:            hinit
-version:         0.2.1
+version:         0.2.2
 synopsis:        Generic project initialization tool
 description:
   hinit is a generic project initialization tool similar to cookiecutter.

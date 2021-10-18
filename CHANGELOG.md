@@ -1,5 +1,10 @@
 # hinit
 
+## 0.2.2
+
+* Update version bounds
+* Fix various deprecation warnings
+
 ## 0.2.1
 
 * Switch to optics-core
