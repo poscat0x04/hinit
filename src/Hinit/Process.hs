@@ -4,11 +4,11 @@ import Control.Effect.Lift
 import Control.Effect.Terminal
 import Control.Effect.Throw
 import Data.Maybe
-import Data.Text.Prettyprint.Doc
 import Hinit.Errors
 import Hinit.Types
 import Hinit.Utils
 import Path
+import Prettyprinter
 import System.Directory
 import System.Exit
 import System.IO (hGetContents)

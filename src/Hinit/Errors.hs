@@ -13,13 +13,13 @@ import Control.Effect.Terminal
 import Control.Exception
 import Data.String.Interpolate
 import Data.Text (Text)
-import Data.Text.Prettyprint.Doc
-import Data.Text.Prettyprint.Doc.Render.Terminal
 import Data.Void
 import GHC.Generics
 import Hinit.Types
 import Hinit.Utils
 import Path
+import Prettyprinter
+import Prettyprinter.Render.Terminal
 import System.Exit
 import System.IO
 import System.Process

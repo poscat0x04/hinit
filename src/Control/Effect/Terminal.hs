@@ -11,7 +11,7 @@ import Control.Monad.IO.Class
 import Data.Functor
 import Data.Kind
 import Data.Text (Text, pack)
-import Data.Text.Prettyprint.Doc
+import Prettyprinter
 import Prettyprinter.Render.Terminal
 import System.Console.Haskeline
 import System.IO

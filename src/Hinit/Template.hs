@@ -13,7 +13,6 @@ import Data.Monoid
 import Data.String.Interpolate
 import Data.Text (Text, pack, unpack)
 import qualified Data.Text.IO as T
-import Data.Text.Prettyprint.Doc
 import GHC.Generics
 import Hinit.Errors
 import Hinit.Template.Config
@@ -22,6 +21,7 @@ import Hinit.Utils
 import Path
 import Path.IO
 import Paths_hinit
+import Prettyprinter
 import System.FilePath.Glob
 import Text.Mustache hiding (Template)
 import Text.Mustache.Types (Value)

@@ -8,12 +8,12 @@ import Control.Effect.Throw
 import Data.Maybe
 import Data.String.Interpolate
 import Data.Text (Text, unpack)
-import Data.Text.Prettyprint.Doc
 import Hinit.Errors
 import Hinit.Template
 import Hinit.Types
 import Hinit.Utils
 import Path
+import Prettyprinter
 import Prettyprinter.Render.Terminal
 import System.IO
 

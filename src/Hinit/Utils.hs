@@ -1,8 +1,8 @@
 module Hinit.Utils where
 
 import Data.Text (Text)
-import Data.Text.Prettyprint.Doc
-import Data.Text.Prettyprint.Doc.Render.Terminal
+import Prettyprinter
+import Prettyprinter.Render.Terminal
 import System.FilePath.Glob
 
 mkBulletList :: [Doc a] -> Doc a
