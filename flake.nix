@@ -1,7 +1,7 @@
 {
   description = "A generic project initialization tool written in Haskell";
 
-  inputs.nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
+  inputs.nixpkgs.url = github:poscat0x04/nixpkgs/dev;
   inputs.flake-utils.url = github:poscat0x04/flake-utils;
 
   outputs = { self, nixpkgs, flake-utils, ... }: with flake-utils;
@@ -20,7 +20,10 @@
         let
           hpkgs = super.haskellPackages.override {
             overrides = hself: hsuper: {
-              haskeline = hsuper.haskeline_0_8_1_1;
+              haskeline = hsuper.haskeline_0_8_2;
+              megaparsec = hsuper.megaparsec_9_2_0;
+              path = hsuper.path_0_9_0;
+              optics-core = hsuper.optics-core_0_4;
             };
           };
           hinit-base = hpkgs.callCabal2nix "hinit" ./. {};
