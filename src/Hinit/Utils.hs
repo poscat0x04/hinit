@@ -24,7 +24,7 @@ instance Pretty a => Show (PrettyShow a) where
   show = show . pretty . unPrettyShow
 
 matches :: [Pattern] -> FilePath -> Bool
-matches ps fp = or $ fmap (`match` fp) ps
+matches ps fp = any (`match` fp) ps
 
 whenJust :: Applicative m => Maybe a -> (a -> m ()) -> m ()
 whenJust Nothing _ = pure ()
