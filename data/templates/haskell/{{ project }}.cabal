@@ -21,27 +21,16 @@ common common-attrs
   build-depends:
     , base        >=4.10 && <5
 
-  default-language:  Haskell2010
+  default-language:  GHC2021
   default-extensions:
     NoStarIsType
-    BangPatterns
     ConstraintKinds
     DataKinds
     DefaultSignatures
-    DeriveFoldable
-    DeriveFunctor
-    DeriveGeneric
-    DeriveTraversable
     DerivingStrategies
     DuplicateRecordFields
-    EmptyCase
-    FlexibleContexts
-    FlexibleInstances
     FunctionalDependencies
     GADTs
-    GeneralizedNewtypeDeriving
-    InstanceSigs
-    KindSignatures
     LambdaCase
     MultiWayIf
     NamedFieldPuns
@@ -51,10 +40,7 @@ common common-attrs
     QuantifiedConstraints
     RecordWildCards
     RoleAnnotations
-    ScopedTypeVariables
     StandaloneKindSignatures
-    TupleSections
-    TypeApplications
     TypeFamilies
     TypeFamilyDependencies
     TypeOperators
