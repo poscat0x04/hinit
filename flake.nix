@@ -20,10 +20,6 @@
         let
           hpkgs = super.haskellPackages.override {
             overrides = hself: hsuper: {
-              haskeline = hsuper.haskeline_0_8_2;
-              megaparsec = hsuper.megaparsec_9_2_0;
-              path = hsuper.path_0_9_0;
-              optics-core = hsuper.optics-core_0_4;
             };
           };
           hinit-base = hpkgs.callCabal2nix "hinit" ./. {};
